@@ -36,7 +36,7 @@ from flask_jwt_extended import (
 from config import app, db, api, jwt
 # Add your model imports
 user_schema = UserSchema(session=db.session)
-YOUR_DOMAIN = 'http://localhost:3000'
+YOUR_DOMAIN = 'vignette.onrender.com'
 stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")
 endpoint_secret = os.environ.get('ENDPOINT_SECRET')
 
@@ -725,6 +725,14 @@ def webhook():
     return make_response(success=True)
 
 @app.route('/')
+@app.route('/home')
+@app.route('/explore')
+@app.route('/search')
+@app.route('/my_gallery')
+@app.route('/profile')
+@app.route('/<:username>')
+@app.route('/success>')
+@app.route('/cancelled>')
 def index():
     return render_template("index.html")
 
