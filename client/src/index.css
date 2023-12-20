@@ -215,9 +215,9 @@
     background-color: #c1c1c1 !important; /* Darker grey on hover */
   }
   
-  
-  
-  
-  
-  
-  
+  .loader {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100vh !important;
+  }
