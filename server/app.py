@@ -737,9 +737,9 @@ def index():
 def user_profile(username=None):
     return render_template("index.html", username=username)
 
-@app.route('/create-checkout-session/<id>')
-def create_checkout_session(id=None):
-    return render_template("index.html", id=id)
+# @app.route('/create-checkout-session/<id>')
+# def create_checkout_session(id=None):
+#     return render_template("index.html", id=id)
 
 @jwt.user_lookup_loader
 def user_lookup_callback(_jwt_header, jwt_data):
