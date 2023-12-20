@@ -184,17 +184,15 @@ class ArtworksByUserId(Resource):
             data = json.loads(request.data)
             tags_data = data.get("tags", [])
 
-            # Create a new artwork
             new_artwork = Artwork(
                 user_id=id,
                 title=data["title"],
                 description=data["description"],
                 image=data["image"],
-                price=data["price"],  # Assuming "price" is part of the request
-                preview=data["preview"],  # Assuming "preview" is part of the request
+                price=data["price"],
+                preview=data["preview"], 
             )
 
-            # Associate existing or newly created tags with the artwork
             for tag_data in tags_data:
                 tag = Tag.query.filter_by(keyword=tag_data).first()
                 if tag is None:
@@ -730,7 +728,7 @@ def webhook():
 @app.route('/search')
 @app.route('/my_gallery')
 @app.route('/profile')
-@app.route('/<:username>')
+@app.route('/:username')
 @app.route('/success>')
 @app.route('/cancelled>')
 def index():
