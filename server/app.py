@@ -732,11 +732,13 @@ def webhook():
 @app.route('/cancelled')
 def index():
     return render_template("index.html")
+
 @app.route('/<username>')
-def index(username=None):
+def user_profile(username=None):
     return render_template("index.html", username=username)
-@app.route('/create-checkout-session')
-def index(id=None):
+
+@app.route('/create-checkout-session/<id>')
+def create_checkout_session(id=None):
     return render_template("index.html", id=id)
 
 @jwt.user_lookup_loader
