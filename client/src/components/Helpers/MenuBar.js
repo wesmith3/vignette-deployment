@@ -13,6 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu'
 import Avatar from '@mui/material/Avatar'
 
 
+
 function MenuBar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const navigate = useNavigate()
@@ -47,7 +48,7 @@ function MenuBar() {
               <MenuIcon />
             </IconButton>
         <Box sx={{ flexGrow: 1 }}>
-          <Image src="././Logo.png" alt="logo" size="small" centered/>
+          <Image src="../../../../public/Logo.png" alt="logo" size="small" centered/>
         </Box>
         </Toolbar>
       </AppBar>
