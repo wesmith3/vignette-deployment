@@ -3,7 +3,7 @@
 # Standard library imports
 
 # Remote library imports
-from flask import request, Flask, make_response, session, redirect
+from flask import request, Flask, make_response, session, redirect, render_template
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy import or_
 import stripe
@@ -726,12 +726,13 @@ def webhook():
 
 @app.route('/')
 def index():
-    return '<h1>Vignette Server</h1>'
+    return render_template("index.html")
 
 @jwt.user_lookup_loader
 def user_lookup_callback(_jwt_header, jwt_data):
     identity = jwt_data['sub']
     return db.session.get(User, identity)
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

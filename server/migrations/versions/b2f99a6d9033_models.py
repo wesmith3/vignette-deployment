@@ -1,8 +1,8 @@
-"""empty message
+"""models
 
-Revision ID: b87416479623
+Revision ID: b2f99a6d9033
 Revises: 
-Create Date: 2023-12-19 21:05:33.177740
+Create Date: 2023-12-19 21:38:19.690331
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b87416479623'
+revision = 'b2f99a6d9033'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,7 +27,7 @@ def upgrade():
     sa.Column('bio', sa.String(), nullable=True),
     sa.Column('location', sa.String(), nullable=True),
     sa.Column('profile_image', sa.String(), nullable=True),
-    sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -42,7 +42,7 @@ def upgrade():
     sa.Column('stripe_product_id', sa.String(), nullable=True),
     sa.Column('stripe_price_id', sa.String(), nullable=True),
     sa.Column('preview', sa.Boolean(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_artworks_user_id_users')),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('user_id', 'title', name='unique_user_title')
@@ -51,7 +51,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('follower_id', sa.Integer(), nullable=True),
     sa.Column('following_id', sa.Integer(), nullable=True),
-    sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['follower_id'], ['users.id'], name=op.f('fk_follows_follower_id_users')),
     sa.ForeignKeyConstraint(['following_id'], ['users.id'], name=op.f('fk_follows_following_id_users')),
     sa.PrimaryKeyConstraint('id')
@@ -61,7 +61,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('artwork_id', sa.Integer(), nullable=True),
     sa.Column('content', sa.String(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['artwork_id'], ['artworks.id'], name=op.f('fk_comments_artwork_id_artworks')),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_comments_user_id_users')),
@@ -70,7 +70,7 @@ def upgrade():
     op.create_table('likes',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('artwork_id', sa.Integer(), nullable=False),
-    sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['artwork_id'], ['artworks.id'], name=op.f('fk_likes_artwork_id_artworks')),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_likes_user_id_users')),
     sa.PrimaryKeyConstraint('user_id', 'artwork_id')
@@ -79,7 +79,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('keyword', sa.String(), nullable=False),
     sa.Column('artwork_id', sa.Integer(), nullable=True),
-    sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['artwork_id'], ['artworks.id'], name=op.f('fk_tags_artwork_id_artworks')),
     sa.PrimaryKeyConstraint('id')
     )
@@ -88,7 +88,7 @@ def upgrade():
     sa.Column('buyer_id', sa.Integer(), nullable=True),
     sa.Column('amount_paid', sa.Float(), nullable=False),
     sa.Column('artwork_id', sa.Integer(), nullable=True),
-    sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
     sa.ForeignKeyConstraint(['artwork_id'], ['artworks.id'], name=op.f('fk_transactions_artwork_id_artworks')),
     sa.ForeignKeyConstraint(['buyer_id'], ['users.id'], name=op.f('fk_transactions_buyer_id_users')),
     sa.PrimaryKeyConstraint('id')
