@@ -8,7 +8,6 @@ import { AuthContext } from './Helpers/AuthProvider'
 
 function Login({ onLogin }) {
   const navigate = useNavigate()
-  const background = '../../Gallery.jpg'
   const [alertMessage, setAlertMessage] = useState(null)
   const [snackType, setSnackType] = useState('')
   const { login } = useContext(AuthContext)
