@@ -19,6 +19,7 @@ flask-marshmallow==0.15.0
 flask-migrate==4.0.5
 flask-restful==0.3.10
 flask-sqlalchemy==3.0.3
+gunicorn==21.2.0
 idna==3.6; python_version >= '3.5'
 importlib-metadata==7.0.0; python_version < '3.10'
 importlib-resources==6.1.1; python_version < '3.9'
