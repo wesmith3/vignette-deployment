@@ -8,7 +8,7 @@ import { AuthContext } from './Helpers/AuthProvider'
 
 function Login({ onLogin }) {
   const navigate = useNavigate()
-  const background = '/static/Gallery.jpg'
+  const background = '././Gallery.jpg'
   const [alertMessage, setAlertMessage] = useState(null)
   const [snackType, setSnackType] = useState('')
   const { login } = useContext(AuthContext)
@@ -65,7 +65,7 @@ function Login({ onLogin }) {
       verticalAlign="middle"
     >
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Image src="/static/Logo.png" size="massive" />
+        <Image src="././Logo.png" size="massive" />
         <br />
         <Form onSubmit={formik.handleSubmit} id="formikLogin" size="large">
           <Segment stacked>

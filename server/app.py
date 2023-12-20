@@ -728,12 +728,16 @@ def webhook():
 @app.route('/search')
 @app.route('/my_gallery')
 @app.route('/profile')
-@app.route('/<username>')
-@app.route('/create-checkout-session/<int:id>')
 @app.route('/success')
 @app.route('/cancelled')
-def index(username=None, id=None):
-    return render_template("index.html", username=username, id=id)
+def index():
+    return render_template("index.html")
+@app.route('/<username>')
+def index(username=None):
+    return render_template("index.html", username=username)
+@app.route('/create-checkout-session')
+def index(id=None):
+    return render_template("index.html", id=id)
 
 @jwt.user_lookup_loader
 def user_lookup_callback(_jwt_header, jwt_data):
