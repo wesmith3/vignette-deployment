@@ -48,7 +48,7 @@ function MenuBar() {
               <MenuIcon />
             </IconButton>
         <Box sx={{ flexGrow: 1 }}>
-          <Image src="../../../../public/Logo.png" alt="logo" size="small" centered/>
+          <Image src="././Logo.png" alt="logo" size="small" centered/>
         </Box>
         </Toolbar>
       </AppBar>
